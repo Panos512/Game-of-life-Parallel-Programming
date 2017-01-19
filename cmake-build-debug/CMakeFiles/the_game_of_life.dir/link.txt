@@ -1,0 +1,1 @@
+/usr/bin/cc  -g   CMakeFiles/the_game_of_life.dir/main.c.o  -o the_game_of_life 

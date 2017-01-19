@@ -1,0 +1,3 @@
+/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/the_game_of_life.dir
