@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/the_game_of_life.dir/main.c.o"
+  "CMakeFiles/the_game_of_life.dir/game_of_life.c.o"
   "the_game_of_life.pdb"
   "the_game_of_life"
 )

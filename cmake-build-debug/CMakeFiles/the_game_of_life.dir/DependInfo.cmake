@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/home/feta/CLionProjects/the_game_of_life/game_of_life.c" "/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/the_game_of_life.dir/game_of_life.c.o"
   "/home/feta/CLionProjects/the_game_of_life/main.c" "/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/the_game_of_life.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/usr/include/mpi"
   )
 
 # Targets to which this target links.

@@ -1,1 +1,1 @@
-/usr/bin/cc  -g   CMakeFiles/the_game_of_life.dir/main.c.o  -o the_game_of_life 
+/usr/bin/cc  -g   CMakeFiles/the_game_of_life.dir/main.c.o CMakeFiles/the_game_of_life.dir/game_of_life.c.o  -o the_game_of_life 

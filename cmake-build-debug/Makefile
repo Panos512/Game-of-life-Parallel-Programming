@@ -123,6 +123,33 @@ the_game_of_life/fast:
 	$(MAKE) -f CMakeFiles/the_game_of_life.dir/build.make CMakeFiles/the_game_of_life.dir/build
 .PHONY : the_game_of_life/fast
 
+game_of_life.o: game_of_life.c.o
+
+.PHONY : game_of_life.o
+
+# target to build an object file
+game_of_life.c.o:
+	$(MAKE) -f CMakeFiles/the_game_of_life.dir/build.make CMakeFiles/the_game_of_life.dir/game_of_life.c.o
+.PHONY : game_of_life.c.o
+
+game_of_life.i: game_of_life.c.i
+
+.PHONY : game_of_life.i
+
+# target to preprocess a source file
+game_of_life.c.i:
+	$(MAKE) -f CMakeFiles/the_game_of_life.dir/build.make CMakeFiles/the_game_of_life.dir/game_of_life.c.i
+.PHONY : game_of_life.c.i
+
+game_of_life.s: game_of_life.c.s
+
+.PHONY : game_of_life.s
+
+# target to generate assembly for a file
+game_of_life.c.s:
+	$(MAKE) -f CMakeFiles/the_game_of_life.dir/build.make CMakeFiles/the_game_of_life.dir/game_of_life.c.s
+.PHONY : game_of_life.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -159,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... the_game_of_life"
+	@echo "... game_of_life.o"
+	@echo "... game_of_life.i"
+	@echo "... game_of_life.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
