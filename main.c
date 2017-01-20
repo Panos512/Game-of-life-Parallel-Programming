@@ -3,7 +3,7 @@
 #include <mpi.h>
 #include <math.h>
 
-int* create_buffer(int* buffer, int width, int height, char** argv, int argc){
+char* create_buffer(char* buffer, int width, int height, char** argv, int argc){
     if(argc == 2){
         char* filename = argv[1];
         FILE *file;
@@ -14,19 +14,21 @@ int* create_buffer(int* buffer, int width, int height, char** argv, int argc){
             fscanf(file, "%*d");
             int arraySize = width * height;
 
-            buffer =(int*) malloc(sizeof (int) * arraySize);
-            for(int i = 0; i < arraySize; i++)
-                fscanf( file, "%d", &buffer[i]);
-
+            buffer =(char*) malloc(sizeof (char) * arraySize);
+            for(int i = 0; i < arraySize; i++){
+                int num;
+                fscanf( file, "%d", &num);
+                buffer[i]= num;
+            }
             fclose(file);
         }
     }else if(argc == 3){
 
         int arraySize = width * height;
 
-        buffer = (int*) malloc(sizeof(int) * arraySize);
+        buffer = (char*) malloc(sizeof(char) * arraySize);
         for(int i = 0; i < arraySize; i++)
-            buffer[i] = i;
+            buffer[i] = rand() < RAND_MAX / 10 ? 1 : 0;
     }
 
     return buffer;
@@ -51,7 +53,6 @@ int main(int argc, char **argv) {
         height = atoi(argv[2]);
     }
 
-    MPI_Comm cartesian;
     //MPI Initialization
     MPI_Init(&argc, &argv);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
@@ -59,36 +60,42 @@ int main(int argc, char **argv) {
 
 
     //Matrix Creation
-    int* buffer = NULL;
+
+    char* buffer;
+
     if(rank == 0){
         buffer = create_buffer(buffer, width, height, argv, argc);
-        printf("Rank: %d\n", rank);
-        for(int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++)
-                printf("%d ", buffer[i * width + j]);
-            printf("\n");
-        }
-        printf("\n");
     }
 
     //Calculating width & height of each block
+
     int blockside = (int)sqrt(size);
     int blockwidth = width / blockside;
     int blockheight = height / blockside;
 
-    int sides[2] = {blockside, blockside};
-    int periodic[2] = {1, 1};
+    //Allocate local buffer of each process
+    char local_buffer[blockheight*blockwidth];
+    for (int i = 0; i <  blockheight*blockwidth; i ++)
+        local_buffer[i] = 0;
 
-    MPI_Cart_create(MPI_COMM_WORLD, 2, sides, periodic, 1, &cartesian);
-    if (cartesian == MPI_COMM_NULL) {
-        printf("Could not create cartesian communicator\n");
-        MPI_Finalize();
-        return 1;
-    }
+    //Allocate local return buffer of each process
+    char local_bufferR[blockheight*blockwidth];
+    for (int i = 0; i <  blockheight*blockwidth; i ++)
+        local_bufferR[i] = 0;
+
+    //Create datatype for sending blocks
+    MPI_Datatype blocktype;
+    MPI_Datatype blocktype2;
+
+    MPI_Type_vector(blockheight, blockwidth, width, MPI_CHAR, &blocktype2);
+    MPI_Type_create_resized( blocktype2, 0, sizeof(char), &blocktype);
+    MPI_Type_commit(&blocktype);
+
+
 
     //Calculate displacements and counts for MPI_Scatterv
-    int *disps = malloc(size*sizeof(int));
-    int *counts = malloc(size*sizeof(int));
+    int disps[size];
+    int counts[size];
     for (int i = 0; i < blockside; i++) {
         for (int j = 0; j < blockside; j++) {
             disps[i * blockside + j] = i * width * blockheight + j * blockwidth;
@@ -96,25 +103,8 @@ int main(int argc, char **argv) {
         }
     }
 
-    //Create datatype for sending blocks
-    MPI_Datatype mpi_type;
-    MPI_Datatype mpi_type2;
-
-    MPI_Type_vector(blockheight, blockwidth, width, MPI_CHAR, &mpi_type2);
-    MPI_Type_create_resized(mpi_type2, 0, sizeof(char), &mpi_type);
-    MPI_Type_commit(&mpi_type);
-
-    //Allocate local buffer of each process
-    int *local_buffer = (int*) malloc(sizeof(int)*width*height/size);
-    for (int i = 0; i <  width*height/size; i ++)
-        local_buffer[i] = 0;
-
-    //Allocate local return buffer of each process
-    int *local_bufferR = (int*) malloc(sizeof(int)*width*height/size);
-    for (int i = 0; i <  width*height/size; i ++)
-        local_bufferR[i] = 0;
     //Scatter blocks to processes
-    MPI_Scatterv(buffer, counts, disps, mpi_type, local_buffer, width*height/size, MPI_CHAR, 0, cartesian);
+    MPI_Scatterv(buffer, counts, disps, blocktype, local_buffer, blockheight*blockwidth, MPI_CHAR, 0, MPI_COMM_WORLD);
 
 
     for (int proc=0; proc<size; proc++) {
@@ -124,7 +114,7 @@ int main(int argc, char **argv) {
                 printf("Global matrix: \n");
                 for (int ii=0; ii<height; ii++) {
                     for (int jj=0; jj<width; jj++) {
-                        printf("%3d ",(int)buffer[ii*width+jj]);
+                        printf("%d ",(int)buffer[ii*width+jj]);
                     }
                     printf("\n");
                 }
@@ -132,7 +122,7 @@ int main(int argc, char **argv) {
             printf("Local Matrix: \n");
             for (int ii=0; ii<blockheight; ii++) {
                 for (int jj=0; jj<blockwidth; jj++) {
-                    printf("%3d ",(int)local_buffer[ii*blockwidth+jj]);
+                    printf("%d ",(int)local_buffer[ii*blockwidth+jj]);
                 }
                 printf("\n");
             }
