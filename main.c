@@ -2,7 +2,6 @@
 #include <math.h>
 #include "game_of_life.h"
 
-// store the ranks of neighbouring processes in ranks[]
 
 
 char* create_buffer(char* buffer, int width, int height, char** argv, int argc){
@@ -144,7 +143,12 @@ int main(int argc, char **argv) {
 //                    printf("\n");
 //                }
 //            }
-
+            for (int ii=0; ii<blockheight; ii++) {
+                for (int jj=0; jj<blockwidth; jj++) {
+                    printf("%d ",(int)result_buffer[ii*blockwidth+jj]);
+                }
+                printf("\n");
+            }
 
             for (int ii=0; ii<blockheight; ii++) {
                 for (int jj=0; jj<blockwidth; jj++) {
