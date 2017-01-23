@@ -1,40 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <mpi.h>
+
 #include <math.h>
-typedef enum {DIR_ULEFT = 0, DIR_UP, DIR_URIGHT, DIR_LEFT, DIR_CENTER,
-    DIR_RIGHT, DIR_DLEFT, DIR_DOWN, DIR_DRIGHT} dir;
+#include "game_of_life.h"
+
 // store the ranks of neighbouring processes in ranks[]
-void get_ranks(int cur_rank, MPI_Comm cartesian, int ranks[]) {
-    int coords[2];
-
-    //Vres tis suntetagmenes mou
-    MPI_Cart_coords(cartesian, cur_rank, 2, coords);
-    ranks[DIR_CENTER] = cur_rank;
-
-    //Aptis suntetagmenes mou upologise tis suntetagmenes tou kathe geitona
-    //kai vres to rank tou
-    //O pinakas rank perilamvanei:
-    //rank[DIR_ULEFT, DIR_UP, DIR_URIGHT, DIR_LEFT, DIR_CENTER,
-    //DIR_RIGHT, DIR_DLEFT, DIR_DOWN, DIR_DRIGHT]
-    coords[1]--;
-    coords[0]--;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_ULEFT]);
-    coords[1]++;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_UP]);
-    coords[1]++;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_URIGHT]);
-    coords[0]++;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_RIGHT]);
-    coords[1] -= 2;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_LEFT]);
-    coords[0]++;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_DLEFT]);
-    coords[1]++;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_DOWN]);
-    coords[1]++;
-    MPI_Cart_rank(cartesian, coords, &ranks[DIR_DRIGHT]);
-}
 
 
 char* create_buffer(char* buffer, int width, int height, char** argv, int argc){
@@ -152,38 +120,63 @@ int main(int argc, char **argv) {
 
     //Scatter blocks to processes
     MPI_Scatterv(buffer, counts, disps, blocktype, local_buffer, blockheight*blockwidth, MPI_CHAR, 0, cartesian);
+
+    prepare_coltype(blockwidth, blockheight);
+
     int neighbour_ranks[9];
     get_ranks(rank,  cartesian, neighbour_ranks);
+
+    MPI_Barrier(cartesian);
+
+    char* result_buffer;
+
+    result_buffer = game_of_life(blockwidth, blockheight, neighbour_ranks, cartesian, local_buffer, local_bufferR);
 
     for (int proc=0; proc<size; proc++) {
         if (proc == rank) {
             printf("Rank = %d\n", rank);
-            if (rank == 0) {
-                printf("Global matrix: \n");
-                for (int ii=0; ii<height; ii++) {
-                    for (int jj=0; jj<width; jj++) {
-                        printf("%d ",(int)buffer[ii*width+jj]);
-                    }
-                    printf("\n");
-                }
-            }
-            printf("My Neighbors: \n");
-            for(int i = 0; i < 9; i++)
-                printf("%d ", neighbour_ranks[i]);
-            printf("\n");
-            printf("Local Matrix: \n");
+//            if (rank == 0) {
+//                printf("Global matrix: \n");
+//                for (int ii=0; ii<height; ii++) {
+//                    for (int jj=0; jj<width; jj++) {
+//                        printf("%d ",(int)result_buffer[ii*width+jj]);
+//                    }
+//                    printf("\n");
+//                }
+//            }
+
+
             for (int ii=0; ii<blockheight; ii++) {
                 for (int jj=0; jj<blockwidth; jj++) {
-                    printf("%d ",(int)local_buffer[ii*blockwidth+jj]);
+                    printf(result_buffer[ii * blockwidth + jj]  ? "\033[07m  \033[m" : "  ");
                 }
                 printf("\n");
             }
             printf("\n");
         }
-        MPI_Barrier(MPI_COMM_WORLD);
+            MPI_Barrier(cartesian);
+    }
+
+    MPI_Gatherv(result_buffer, width*height/size, MPI_CHAR, buffer, counts, disps, blocktype, 0, cartesian);
+    if(rank == 0) {
+        for (int ii = 0; ii < height; ii++) {
+            for (int jj = 0; jj < width; jj++) {
+                printf("%d ", (int) buffer[ii * width + jj]);
+            }
+            printf("\n");
+        }
+        for (int ii = 0; ii < height; ii++) {
+            for (int jj = 0; jj < width; jj++) {
+                printf(buffer[ii * width + jj]  ? "\033[07m  \033[m" : "  ");
+            }
+            printf("\n");
+        }
     }
 
 
+
+
     MPI_Finalize();
+
     return 0;
 }
