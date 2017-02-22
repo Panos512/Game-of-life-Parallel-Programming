@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/feta/clion-2016.3.2/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/yiota/clion-2016.3.2/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/feta/clion-2016.3.2/bin/cmake/bin/cmake -E remove -f
+RM = /home/yiota/clion-2016.3.2/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/feta/CLionProjects/the_game_of_life
+CMAKE_SOURCE_DIR = /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/feta/CLionProjects/the_game_of_life/cmake-build-debug
+CMAKE_BINARY_DIR = /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/the_game_of_life.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/the_game_of_life.dir/flags.make
 
 CMakeFiles/the_game_of_life.dir/main.c.o: CMakeFiles/the_game_of_life.dir/flags.make
 CMakeFiles/the_game_of_life.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/the_game_of_life.dir/main.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/the_game_of_life.dir/main.c.o   -c /home/feta/CLionProjects/the_game_of_life/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/the_game_of_life.dir/main.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/the_game_of_life.dir/main.c.o   -c /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/main.c
 
 CMakeFiles/the_game_of_life.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/the_game_of_life.dir/main.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/feta/CLionProjects/the_game_of_life/main.c > CMakeFiles/the_game_of_life.dir/main.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/main.c > CMakeFiles/the_game_of_life.dir/main.c.i
 
 CMakeFiles/the_game_of_life.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/the_game_of_life.dir/main.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/feta/CLionProjects/the_game_of_life/main.c -o CMakeFiles/the_game_of_life.dir/main.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/main.c -o CMakeFiles/the_game_of_life.dir/main.c.s
 
 CMakeFiles/the_game_of_life.dir/main.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/the_game_of_life.dir/main.c.o.provides.build: CMakeFiles/the_game_of_
 
 CMakeFiles/the_game_of_life.dir/game_of_life.c.o: CMakeFiles/the_game_of_life.dir/flags.make
 CMakeFiles/the_game_of_life.dir/game_of_life.c.o: ../game_of_life.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/the_game_of_life.dir/game_of_life.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/the_game_of_life.dir/game_of_life.c.o   -c /home/feta/CLionProjects/the_game_of_life/game_of_life.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/the_game_of_life.dir/game_of_life.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/the_game_of_life.dir/game_of_life.c.o   -c /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/game_of_life.c
 
 CMakeFiles/the_game_of_life.dir/game_of_life.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/the_game_of_life.dir/game_of_life.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/feta/CLionProjects/the_game_of_life/game_of_life.c > CMakeFiles/the_game_of_life.dir/game_of_life.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/game_of_life.c > CMakeFiles/the_game_of_life.dir/game_of_life.c.i
 
 CMakeFiles/the_game_of_life.dir/game_of_life.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/the_game_of_life.dir/game_of_life.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/feta/CLionProjects/the_game_of_life/game_of_life.c -o CMakeFiles/the_game_of_life.dir/game_of_life.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/game_of_life.c -o CMakeFiles/the_game_of_life.dir/game_of_life.c.s
 
 CMakeFiles/the_game_of_life.dir/game_of_life.c.o.requires:
 
@@ -117,7 +117,7 @@ the_game_of_life: CMakeFiles/the_game_of_life.dir/main.c.o
 the_game_of_life: CMakeFiles/the_game_of_life.dir/game_of_life.c.o
 the_game_of_life: CMakeFiles/the_game_of_life.dir/build.make
 the_game_of_life: CMakeFiles/the_game_of_life.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable the_game_of_life"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable the_game_of_life"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/the_game_of_life.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -135,6 +135,6 @@ CMakeFiles/the_game_of_life.dir/clean:
 .PHONY : CMakeFiles/the_game_of_life.dir/clean
 
 CMakeFiles/the_game_of_life.dir/depend:
-	cd /home/feta/CLionProjects/the_game_of_life/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/feta/CLionProjects/the_game_of_life /home/feta/CLionProjects/the_game_of_life /home/feta/CLionProjects/the_game_of_life/cmake-build-debug /home/feta/CLionProjects/the_game_of_life/cmake-build-debug /home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/the_game_of_life.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug /home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/CMakeFiles/the_game_of_life.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/the_game_of_life.dir/depend
 

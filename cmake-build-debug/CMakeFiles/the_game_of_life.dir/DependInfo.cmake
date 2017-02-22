@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/feta/CLionProjects/the_game_of_life/game_of_life.c" "/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/the_game_of_life.dir/game_of_life.c.o"
-  "/home/feta/CLionProjects/the_game_of_life/main.c" "/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/CMakeFiles/the_game_of_life.dir/main.c.o"
+  "/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/game_of_life.c" "/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/CMakeFiles/the_game_of_life.dir/game_of_life.c.o"
+  "/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/main.c" "/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/CMakeFiles/the_game_of_life.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

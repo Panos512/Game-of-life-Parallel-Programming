@@ -13,10 +13,10 @@ void prepare_coltype(int blockwidth, int blockheight);
 
 void get_ranks(int cur_rank, MPI_Comm cartesian, int ranks[]);
 
-//int equal(char *u, char *v, int w, int h);
-//
-//void show(void *u, int w, int h);
+int equal(char *u, char *v, int w, int h);
 
-char* game_of_life(int blockwidth, int blockheight, int neighbour_ranks[], MPI_Comm cartesian, char local_buffer[], char local_bufferR[]);
+int empty(char *, int, int);
+
+char* game_of_life(int myrank, int blockwidth, int blockheight, int neighbour_ranks[], MPI_Comm cartesian, char local_buffer[], char local_bufferR[]);
 
 #endif //THE_GAME_OF_LIFE_GAME_OF_LIFE_H

@@ -129,11 +129,11 @@ int main(int argc, char **argv) {
 
     char* result_buffer;
 
-    result_buffer = game_of_life(blockwidth, blockheight, neighbour_ranks, cartesian, local_buffer, local_bufferR);
+    result_buffer = game_of_life(rank, blockwidth, blockheight, neighbour_ranks, cartesian, local_buffer, local_bufferR);
 
     for (int proc=0; proc<size; proc++) {
         if (proc == rank) {
-            printf("Rank = %d\n", rank);
+           // printf("Rank = %d\n", rank);
 //            if (rank == 0) {
 //                printf("Global matrix: \n");
 //                for (int ii=0; ii<height; ii++) {
@@ -143,20 +143,20 @@ int main(int argc, char **argv) {
 //                    printf("\n");
 //                }
 //            }
-            for (int ii=0; ii<blockheight; ii++) {
-                for (int jj=0; jj<blockwidth; jj++) {
-                    printf("%d ",(int)result_buffer[ii*blockwidth+jj]);
-                }
-                printf("\n");
-            }
+//            for (int ii=0; ii<blockheight; ii++) {
+//                for (int jj=0; jj<blockwidth; jj++) {
+//                    printf("%d ",(int)result_buffer[ii*blockwidth+jj]);
+//                }
+//                printf("\n");
+//            }
 
-            for (int ii=0; ii<blockheight; ii++) {
-                for (int jj=0; jj<blockwidth; jj++) {
-                    printf(result_buffer[ii * blockwidth + jj]  ? "\033[07m  \033[m" : "  ");
-                }
-                printf("\n");
-            }
-            printf("\n");
+//            for (int ii=0; ii<blockheight; ii++) {
+//                for (int jj=0; jj<blockwidth; jj++) {
+//                    printf(result_buffer[ii * blockwidth + jj]  ? "\033[07m  \033[m" : "  ");
+//                }
+//                printf("\n");
+//            }
+           // printf("\n");
         }
             MPI_Barrier(cartesian);
     }
@@ -169,12 +169,12 @@ int main(int argc, char **argv) {
             }
             printf("\n");
         }
-        for (int ii = 0; ii < height; ii++) {
-            for (int jj = 0; jj < width; jj++) {
-                printf(buffer[ii * width + jj]  ? "\033[07m  \033[m" : "  ");
-            }
-            printf("\n");
-        }
+//        for (int ii = 0; ii < height; ii++) {
+//            for (int jj = 0; jj < width; jj++) {
+//                printf(buffer[ii * width + jj]  ? "\033[07m  \033[m" : "  ");
+//            }
+//            printf("\n");
+//        }
     }
 
 

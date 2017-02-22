@@ -8,94 +8,94 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug"/>
+				<Option working_dir="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug"/>
+				<Option working_dir="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug"/>
+				<Option working_dir="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="the_game_of_life">
-				<Option output="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/the_game_of_life" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug"/>
+				<Option output="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/the_game_of_life" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/mpi"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 the_game_of_life"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 the_game_of_life"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="the_game_of_life/fast">
-				<Option output="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/the_game_of_life" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/feta/CLionProjects/the_game_of_life/cmake-build-debug"/>
+				<Option output="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/the_game_of_life" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/mpi"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
-					<Add directory="/usr/include/c++/5"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
-					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 the_game_of_life/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/feta/CLionProjects/the_game_of_life/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 the_game_of_life/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/feta/CLionProjects/the_game_of_life/game_of_life.c">
+		<Unit filename="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/game_of_life.c">
 			<Option target="the_game_of_life"/>
 		</Unit>
-		<Unit filename="/home/feta/CLionProjects/the_game_of_life/game_of_life.h">
+		<Unit filename="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/game_of_life.h">
 			<Option target="the_game_of_life"/>
 		</Unit>
-		<Unit filename="/home/feta/CLionProjects/the_game_of_life/main.c">
+		<Unit filename="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/main.c">
 			<Option target="the_game_of_life"/>
 		</Unit>
-		<Unit filename="/home/feta/CLionProjects/the_game_of_life/CMakeLists.txt">
+		<Unit filename="/home/yiota/Desktop/Parallhla/Game-of-life-Parallel-Programming/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
