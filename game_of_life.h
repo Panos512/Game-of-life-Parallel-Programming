@@ -17,6 +17,6 @@ int equal(char *u, char *v, int w, int h);
 
 int empty(char *, int, int);
 
-char* game_of_life(int myrank, int blockwidth, int blockheight, int neighbour_ranks[], MPI_Comm cartesian, char local_buffer[], char local_bufferR[]);
+char* game_of_life(int myrank, int blockwidth, int blockheight, int neighbour_ranks[], MPI_Comm cartesian, char local_buffer[], char local_bufferR[], int iterations);
 
 #endif //THE_GAME_OF_LIFE_GAME_OF_LIFE_H

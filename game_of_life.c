@@ -1,5 +1,6 @@
 #include "game_of_life.h"
 
+
 #ifdef _OPENMP
 #include <omp.h>
 #define THREADNUM 2
@@ -20,13 +21,13 @@ void prepare_coltype(int blockwidth, int blockheight) {
 void get_ranks(int cur_rank, MPI_Comm cartesian, int ranks[]) {
     int coords[2];
 
-    //Vres tis suntetagmenes mou
+    //find my coordinates
     MPI_Cart_coords(cartesian, cur_rank, 2, coords);
     ranks[DIR_CENTER] = cur_rank;
 
-    //Aptis suntetagmenes mou upologise tis suntetagmenes tou kathe geitona
-    //kai vres to rank tou
-    //O pinakas rank perilamvanei:
+    //from my coordinates calculate the coordinates of each neighbor
+    //and also each of their ranks
+    //The rank matrix includes:
     //rank[DIR_ULEFT, DIR_UP, DIR_URIGHT, DIR_LEFT, DIR_CENTER,
     //DIR_RIGHT, DIR_DLEFT, DIR_DOWN, DIR_DRIGHT]
     coords[1]--;
@@ -66,8 +67,8 @@ int empty(char *array, int w, int h){
 
 
 
-char* game_of_life(int myrank, int blockwidth, int blockheight, int ranks[], MPI_Comm cartesian, char local_buffer[], char local_bufferR[]){
-    int notterminated;
+char* game_of_life(int myrank, int blockwidth, int blockheight, int ranks[], MPI_Comm cartesian, char local_buffer[], char local_bufferR[], int iterations){
+    int notterminated, it;
     char new[blockheight*blockwidth];
 int count = 0;
     MPI_Request sendRequests[9], recvRequests[9];
@@ -79,10 +80,8 @@ int count = 0;
     // get ranks of neighbouring processes
     int rUleft = ranks[DIR_ULEFT], rUp = ranks[DIR_UP], rUright = ranks[DIR_URIGHT], rRight = ranks[DIR_RIGHT],
             rLeft = ranks[DIR_LEFT], rDleft = ranks[DIR_DLEFT], rDown = ranks[DIR_DOWN], rDright = ranks[DIR_DRIGHT];
-
-    while(1) {
+    for(it = 0; it < iterations; it++){
         count++;
-
         // send needed pixels to other processes (top and bottom row, left and right column and the 4 corner pixels)
         MPI_Isend(&local_buffer[0], 1, MPI_CHAR, rUleft, DIR_ULEFT, cartesian, &sendRequests[DIR_ULEFT]);
         MPI_Isend(local_buffer, blockwidth, MPI_CHAR, rUp, DIR_UP, cartesian, &sendRequests[DIR_UP]);
@@ -113,12 +112,9 @@ int count = 0;
         recvRequests[DIR_CENTER] = MPI_REQUEST_NULL;
 
         MPI_Waitall(8, recvRequests, MPI_STATUSES_IGNORE);
-
-        #ifdef _OPENMP
-        #pragma omp parallel for num_threads(THREADNUM)
-        #endif
-
-        //for inside cells
+	#ifdef _OPENMP
+	#pragma omp parallel for num_threads(THREADNUM)
+	#endif
         for (int i = 1; i < blockheight - 1; i++) {
             for (int j = 1; j < blockwidth - 1; j++) {
                 int offset = i * blockwidth + j;
@@ -234,7 +230,6 @@ int count = 0;
             local_bufferR[offset] = (n == 3 || (n == 2 && local_buffer[offset]));
 
         }
-
         //for top-left corner
         int n = 0;
         if (upRow[0])
@@ -245,7 +240,7 @@ int count = 0;
             n++;
         if (leftCol[1])
             n++;
-        if (urCorner)
+        if (ulCorner)
             n++;
         if (local_buffer[1])
             n++;
@@ -320,11 +315,7 @@ int count = 0;
             n++;
         if (drCorner)
             n++;
-        if(count == 17 && myrank == 2){
-            printf("n: %d offset:%d \n offset-blockwdith: %d offset-blockwidth-1: %d\n offset-1: %d rC blockwidth-1: %d \n rC blockwidth-2: %d\n drC: %d\n",
-            n, offset, local_buffer[offset-blockwidth], local_buffer[offset-blockwidth-1], local_buffer[offset-1],
-                   rightCol[blockwidth-1], rightCol[blockwidth-2], drCorner);
-        }
+
         local_bufferR[offset] = (n == 3 || (n == 2 && local_buffer[offset]));
 
 
@@ -332,16 +323,8 @@ int count = 0;
         MPI_Waitall(8, sendRequests, MPI_STATUSES_IGNORE);
 
 
-        if(myrank == 1){
-            printf("%d\n", count);
-            for (int ii=0; ii<blockheight; ii++) {
-                for (int jj=0; jj<blockwidth; jj++) {
-                    printf("%d ",(int)local_buffer[ii*blockwidth+jj]);
-                }
-                printf("\n");
-            }
-            printf("\n");
-        }
+
+
         char *tmp = local_bufferR;
         local_bufferR = local_buffer;
         local_buffer = tmp;
@@ -368,7 +351,6 @@ int count = 0;
             break;
 
     }
-    printf("%d: count %d\n", myrank, count);
 
     free(upRow);
     free(leftCol);

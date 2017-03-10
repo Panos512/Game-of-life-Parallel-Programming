@@ -5,7 +5,7 @@
 
 
 char* create_buffer(char* buffer, int width, int height, char** argv, int argc){
-    if(argc == 2){
+    if(argc == 3){
         char* filename = argv[1];
         FILE *file;
 
@@ -23,7 +23,7 @@ char* create_buffer(char* buffer, int width, int height, char** argv, int argc){
             }
             fclose(file);
         }
-    }else if(argc == 3){
+    }else if(argc == 4){
 
         int arraySize = width * height;
 
@@ -37,11 +37,12 @@ char* create_buffer(char* buffer, int width, int height, char** argv, int argc){
 }
 int main(int argc, char **argv) {
     MPI_Comm cartesian;
-
+    double starttime, endtime, elapsed, elapsed_max;
     int size, rank;
-    int width, height;
+    int width, height, iterations;
 
-    if(argc == 2){
+    if(argc == 3){
+	iterations = atoi(argv[2]);
         char* filename = argv[1];
         FILE *file;
 
@@ -51,9 +52,10 @@ int main(int argc, char **argv) {
             fscanf(file, "%d", &height);
         }
         fclose(file);
-    }else if(argc == 3){
+    }else if(argc == 4){
         width = atoi(argv[1]);
         height = atoi(argv[2]);
+	iterations = atoi(argv[3]);
     }
 
     //MPI Initialization
@@ -129,58 +131,22 @@ int main(int argc, char **argv) {
 
     char* result_buffer;
 
-    result_buffer = game_of_life(rank, blockwidth, blockheight, neighbour_ranks, cartesian, local_buffer, local_bufferR);
 
-    for (int proc=0; proc<size; proc++) {
-        if (proc == rank) {
-           // printf("Rank = %d\n", rank);
-//            if (rank == 0) {
-//                printf("Global matrix: \n");
-//                for (int ii=0; ii<height; ii++) {
-//                    for (int jj=0; jj<width; jj++) {
-//                        printf("%d ",(int)result_buffer[ii*width+jj]);
-//                    }
-//                    printf("\n");
-//                }
-//            }
-//            for (int ii=0; ii<blockheight; ii++) {
-//                for (int jj=0; jj<blockwidth; jj++) {
-//                    printf("%d ",(int)result_buffer[ii*blockwidth+jj]);
-//                }
-//                printf("\n");
-//            }
+    starttime = MPI_Wtime();
+    result_buffer = game_of_life(rank, blockwidth, blockheight, neighbour_ranks, cartesian, local_buffer, local_bufferR, iterations);
 
-//            for (int ii=0; ii<blockheight; ii++) {
-//                for (int jj=0; jj<blockwidth; jj++) {
-//                    printf(result_buffer[ii * blockwidth + jj]  ? "\033[07m  \033[m" : "  ");
-//                }
-//                printf("\n");
-//            }
-           // printf("\n");
-        }
-            MPI_Barrier(cartesian);
-    }
+    endtime = MPI_Wtime();
+    elapsed = endtime - starttime;
+
+    MPI_Reduce(&elapsed, &elapsed_max, 1, MPI_DOUBLE, MPI_MAX, 0, cartesian);
 
     MPI_Gatherv(result_buffer, width*height/size, MPI_CHAR, buffer, counts, disps, blocktype, 0, cartesian);
-    if(rank == 0) {
-        for (int ii = 0; ii < height; ii++) {
-            for (int jj = 0; jj < width; jj++) {
-                printf("%d ", (int) buffer[ii * width + jj]);
-            }
-            printf("\n");
-        }
-//        for (int ii = 0; ii < height; ii++) {
-//            for (int jj = 0; jj < width; jj++) {
-//                printf(buffer[ii * width + jj]  ? "\033[07m  \033[m" : "  ");
-//            }
-//            printf("\n");
-//        }
-    }
-
 
 
 
     MPI_Finalize();
-
+    if (rank == 0) {
+        printf("n: %d, matrix size: %d x %d, number of iterations: %d\nElapsed time: %f\n", size, width, height, iterations, elapsed_max);
+    }
     return 0;
 }
